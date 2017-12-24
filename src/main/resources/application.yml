@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    database: default
+    hibernate:
+      ddl-auto: create
+  datasource:
+    url: jdbc:postgresql://localhost:5432/odessa_user_db?currentSchema=public
+    username: odessit
+    password: pdessa-mama
+    driver-class-name: org.postgresql.Driver
+
+product:
+  datasource:
+      url: jdbc:postgresql://localhost:5432/odessa_product_db?currentSchema=public
+      username: odessit
+      password: pdessa-mama
+      driver-class-name: org.postgresql.Driver
