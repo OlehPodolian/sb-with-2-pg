@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Singular;
 import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.CascadeType;
@@ -37,5 +38,6 @@ public class User {
 	private String lastName;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@Builder.Default
 	private List<Purchase> purchases = new ArrayList<>();
 }

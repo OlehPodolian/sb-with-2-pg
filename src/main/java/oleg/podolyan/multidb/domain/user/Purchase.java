@@ -1,6 +1,7 @@
 package oleg.podolyan.multidb.domain.user;
 
 import oleg.podolyan.multidb.domain.product.Product;
+import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.SQLDelete;
@@ -23,6 +24,7 @@ public class Purchase {
 	@GeneratedValue
 	@Column(name = "purchase_id", unique = true)
 	private Long id;
+	@NaturalId // for test to roll back transaction
 	private String title;
 	private String description;
 	@Column(precision = 2)

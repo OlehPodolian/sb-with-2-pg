@@ -37,14 +37,6 @@ public class ProductRepositoryTest {
 	}
 
 	@Test
-	@Ignore
-	public void whenFindById_thenReturnProduct(){
-		Product actual = productRepository.findOne(1L);
-		assertNotNull(actual);
-		assertEquals(product.getTitle(), actual.getTitle());
-	}
-
-	@Test
 	public void whenFindByTitle_thenReturnUser(){
 		Product actual = productRepository.findByTitle(getProduct().getTitle());
 		assertEquals(product.getDescription(), actual.getDescription());
