@@ -75,6 +75,20 @@ public class UserRepositoryTest {
 		assertEquals(1, users.size());
 	}
 
+	@Test(expected = RuntimeException.class)
+	public void whenAddingUserNotUniquePurchase_thenTransactionCommittedFailed(){
+		User buyer = userRepository.findByFirstName(user.getFirstName());
+		buyer.getPurchases().add(Purchase.of(getProduct("#1", "#1", 15.99)));
+		buyer.getPurchases().add(Purchase.of(getProduct("#1", "#2", 15.99))); // fails uq constraint
+		buyer.getPurchases().add(Purchase.of(getProduct("#3", "#3", 15.99)));
+
+		entityManager.persist(buyer);
+		entityManager.flush();
+		List<User> users = (List<User>) userRepository.findAll();
+		assertEquals(1, users.size());
+		assertTrue(buyer.getPurchases().isEmpty());
+	}
+
 	private User getUser(){
 		return getUser("Max", "Travolta"); // John's younger brother
 	}
